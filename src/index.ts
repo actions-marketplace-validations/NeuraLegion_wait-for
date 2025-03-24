@@ -22,7 +22,7 @@ const interval = 20000;
 const timeout = 1000 * Number(core.getInput('timeout'));
 
 const baseUrl = (
-  hostname ? `https://${hostname}` : 'https://app.neuralegion.com'
+  hostname ? `https://${hostname}` : 'https://app.brightsec.com'
 ).replace(/\/$/, '');
 
 axiosRetry(axios, { retries: 3 });

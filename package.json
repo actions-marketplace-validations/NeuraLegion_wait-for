@@ -1,7 +1,7 @@
 {
   "name": "wait-for",
   "version": "0.1.0",
-  "description": "This action polls a NeuraLegion scan until it returns a detected issue, or its time runs out.",
+  "description": "This action polls a Bright scan until it returns a detected issue, or its time runs out.",
   "main": "index.js",
   "scripts": {
     "build": "tsc",

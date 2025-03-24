@@ -42,13 +42,13 @@ More information is available on Bright’s:
 
 ### `api_token`
 
-**Required**. Your Bright API authorization token (key). You can generate it in the **Organization** section in [the Bright app](https://app.neuralegion.com/login). Find more information [here](https://docs.brightsec.com/docs/manage-your-organization#manage-organization-apicli-authentication-tokens).
+**Required**. Your Bright API authorization token (key). You can generate it in the **Organization** section in [the Bright app](https://app.brightsec.com/login). Find more information [here](https://docs.brightsec.com/docs/manage-your-organization#manage-organization-apicli-authentication-tokens).
 
-_Example:_ `api_token: ${{ secrets.NEURALEGION_TOKEN }}`
+_Example:_ `api_token: ${{ secrets.BRIGHTSEC_TOKEN }}`
 
 ### `scan`
 
-**Required**. ID of an existing scan to be restarted. You can get the scan ID in the Scans section in [the Bright app](https://app.neuralegion.com/login).
+**Required**. ID of an existing scan to be restarted. You can get the scan ID in the Scans section in [the Bright app](https://app.brightsec.com/login).
 
 _Example:_ `scan: ${{ steps.start.outputs.id }}`
 
@@ -94,13 +94,13 @@ URL of the resulting scan.
 ```yml
 start_and_wait_scan:
   runs-on: ubuntu-latest
-  name: A job to run a NeuraLegion scan
+  name: A job to run a Bright scan
   steps:
-    - name: Start NeuraLegion Scan 🏁
+    - name: Start Bright Scan 🏁
       id: start
-      uses: NeuraLegion/run-scan@master
+      uses: NeuraLegion/run-scan@v1
       with:
-        api_token: ${{ secrets.NEURALEGION_TOKEN }}
+        api_token: ${{ secrets.BRIGHTSEC_TOKEN }}
         name: GitHub scan ${{ github.sha }}
         discovery_types: |
           [ "crawler", "archive" ]
@@ -114,9 +114,9 @@ start_and_wait_scan:
       run: echo "The scan was started on ${{ steps.start.outputs.url }}"
     - name: Wait for any issues ⏳
       id: wait
-      uses: NeuraLegion/wait-for@master
+      uses: NeuraLegion/wait-for@v1
       with:
-        api_token: ${{ secrets.NEURALEGION_TOKEN }}
+        api_token: ${{ secrets.BRIGHTSEC_TOKEN }}
         scan: ${{ steps.start.outputs.id }}
         wait_for: any
         timeout: 55
